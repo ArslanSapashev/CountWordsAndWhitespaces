@@ -11,9 +11,9 @@ public class SimpleCountWords {
     public static void main (String[] args) {
         final String text = " Miss Money Penny ";
         final Countable countWords = new CountWordsFreeOfBlock(text);
-        System.out.println("Program has begun the job");
+        LOG.info("Program has begun the job");
         new SimpleCountWords().start(countWords);
-        System.out.println("Program terminated");
+        LOG.info("Program terminated");
         System.exit(0);
     }
 
@@ -50,9 +50,9 @@ public class SimpleCountWords {
         // Starts threads and join main thread to them
         try {
             thread1.start();
-            thread1.join(1000);
             thread2.start();
             thread2.join(1000);
+            thread1.join(1000);
         } catch (InterruptedException ex){
             LOG.error(Thread.currentThread().getName() + " interrupted");
         }
